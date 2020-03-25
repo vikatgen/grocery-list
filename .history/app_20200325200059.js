@@ -14,8 +14,7 @@ submitButton.addEventListener("click", event => {
   const toggleButton = rowDiv.querySelector("#in-basket");
   const listItemName = rowDiv.querySelector(".grocery-name");
   toggleButton.onclick = function() {
-    const isInBasket = listItemName.style.textDecoration == "initial";
-    listItemName.style.textDecoration = isInBasket ? "line-through" : "initial";
+    const isInBasket = (listItemName.style.textDecoration = "initial");
   };
 
   rowDiv.querySelector(".remove-list-item").addEventListener("click", event => {

@@ -1,22 +1,16 @@
 const addGrocery = document.querySelector("#add-grocery-input");
 const submitButton = document.querySelector("#submit-button");
 const listContainer = document.querySelector("#list-container");
-
 submitButton.addEventListener("click", event => {
   let rowDiv = document.createElement("div");
   rowDiv.classList.add("list-item");
   rowDiv.innerHTML = `
-        <input type="submit" id="in-basket" value=""/>
+        <button id="in-basket"></button>
         <div class="grocery-name">${addGrocery.value}</div>
         <div class="remove-list-item">X</div>
     `;
 
-  const toggleButton = rowDiv.querySelector("#in-basket");
-  const listItemName = rowDiv.querySelector(".grocery-name");
-  toggleButton.onclick = function() {
-    const isInBasket = listItemName.style.textDecoration == "initial";
-    listItemName.style.textDecoration = isInBasket ? "line-through" : "initial";
-  };
+  let groceryName = document.querySelector(".grocery-name");
 
   rowDiv.querySelector(".remove-list-item").addEventListener("click", event => {
     const currentRow = event.currentTarget.parentNode;
@@ -24,4 +18,8 @@ submitButton.addEventListener("click", event => {
   });
 
   listContainer.append(rowDiv);
+
+  checkbox.addEventListener("change", event => {
+    groceryName.style.textDecoration = "line-through";
+  });
 });

@@ -6,22 +6,21 @@ submitButton.addEventListener("click", event => {
   let rowDiv = document.createElement("div");
   rowDiv.classList.add("list-item");
   rowDiv.innerHTML = `
-        <input type="submit" id="in-basket" value=""/>
+        <input type="checkbox" id="in-basket" name="checkbox" />
         <div class="grocery-name">${addGrocery.value}</div>
         <div class="remove-list-item">X</div>
     `;
 
-  const toggleButton = rowDiv.querySelector("#in-basket");
-  const listItemName = rowDiv.querySelector(".grocery-name");
-  toggleButton.onclick = function() {
-    const isInBasket = listItemName.style.textDecoration == "initial";
-    listItemName.style.textDecoration = isInBasket ? "line-through" : "initial";
-  };
+  const checkBox = document.querySelector("#in-basket");
+  checkBox.addEventListener("change", event => {
+    if (event.target.checked) {
+      console.log("Miskit toimus");
+    }
+  });
 
   rowDiv.querySelector(".remove-list-item").addEventListener("click", event => {
     const currentRow = event.currentTarget.parentNode;
     currentRow.parentNode.removeChild(currentRow);
   });
-
   listContainer.append(rowDiv);
 });

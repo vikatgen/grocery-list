@@ -11,12 +11,10 @@ submitButton.addEventListener("click", event => {
         <div class="remove-list-item">X</div>
     `;
 
-  const toggleButton = rowDiv.querySelector("#in-basket");
-  const listItemName = rowDiv.querySelector(".grocery-name");
-  toggleButton.onclick = function() {
-    const isInBasket = listItemName.style.textDecoration == "initial";
-    listItemName.style.textDecoration = isInBasket ? "line-through" : "initial";
-  };
+  let groceryName = document.querySelector(".grocery-name");
+  rowDiv.querySelector("#in-basket").addEventListener("click", event => {
+    groceryName.style.textDecoration = "line-through";
+  });
 
   rowDiv.querySelector(".remove-list-item").addEventListener("click", event => {
     const currentRow = event.currentTarget.parentNode;
